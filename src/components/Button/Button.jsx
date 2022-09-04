@@ -10,13 +10,13 @@ export default class Button extends React.Component {
 
     return (
       <Styled.Button type={type}>
-        <Styled.YellowContainer>
-          <Styled.BlueContainer>
-            <Link to={path}>
+        <Link to={path}>
+          <Styled.YellowContainer>
+            <Styled.BlueContainer>
               { title }
-            </Link>
-          </Styled.BlueContainer>
-        </Styled.YellowContainer>
+            </Styled.BlueContainer>
+          </Styled.YellowContainer>
+        </Link>
       </Styled.Button>
     );
   }
