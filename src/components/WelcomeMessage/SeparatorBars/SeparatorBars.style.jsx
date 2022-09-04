@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import { createColoredContainer } from '../../../helpers/styles/createColoredContainer';
+import { coloredContainer } from '../../../helpers/styles/mixins/coloredContainer';
 
 export const Container = styled.div`
   display: grid;
@@ -9,7 +9,7 @@ export const Container = styled.div`
 `;
 
 export const Bar = styled.div`
-  ${createColoredContainer(5, 'white', 'whiteShadow', 0)};
+  ${coloredContainer(5, 'white', 'whiteShadow', 0)};
   width: 100%;
   height: 1.5rem;
 `;

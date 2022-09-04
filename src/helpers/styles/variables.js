@@ -1,4 +1,4 @@
-const vars = {
+const variables = {
   // Fonts
   fontFamily: {
     special: 'VT323, monospace',
@@ -22,4 +22,4 @@ const vars = {
   },
 };
 
-export default vars;
+export default variables;

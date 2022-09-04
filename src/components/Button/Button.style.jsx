@@ -1,19 +1,22 @@
 import styled from 'styled-components/macro';
-import { createColoredContainer } from '../../helpers/styles/createColoredContainer';
-import { createTextShadow } from '../../helpers/styles/textShadow';
-import vars from '../../helpers/styles/variables';
+import { coloredContainer } from '../../helpers/styles/mixins/coloredContainer';
+import { media } from '../../helpers/styles/mixins/media';
+import { textShadow } from '../../helpers/styles/mixins/textShadow';
+import variables from '../../helpers/styles/variables';
+
+const { color } = variables;
 
 export const YellowContainer = styled.div`
-  ${createColoredContainer(6, 'yellow', 'yellowShadow', 0.5)};
+  ${coloredContainer(6, 'yellow', 'yellowShadow', 0.5)};
 `;
 
 export const BlueContainer = styled.div`
-  ${createColoredContainer(6, 'blue', 'blueShadow', 0.5)};
+  ${coloredContainer(6, 'blue', 'blueShadow', 0.5)};
 `;
 
 export const Button = styled.button`
-  color: ${vars.color.white};
-  ${createTextShadow('blueShadow')};
+  color: ${color.white};
+  ${textShadow('blueShadow')};
 
   position: absolute;
   left: 50%;
@@ -21,9 +24,13 @@ export const Button = styled.button`
 
   &:active {
     ${BlueContainer} {
-      ${createColoredContainer(6, 'blue', 'blue', 0.5)};
-      border-top: 3px solid ${vars.color.blueShadow};
-      border-bottom: 3px solid ${vars.color.blue};
+      ${coloredContainer(6, 'blue', 'blue', 0.5)};
+      border-top: 3px solid ${color.blueShadow};
+      border-bottom: 3px solid ${color.blue};
     }
+  }
+
+  ${media(500)} {
+    translate: -50% 2.5rem;
   }
 `;

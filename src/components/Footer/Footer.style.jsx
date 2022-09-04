@@ -1,5 +1,7 @@
 import styled from 'styled-components/macro';
-import vars from '../../helpers/styles/variables';
+import variables from '../../helpers/styles/variables';
+
+const { color } = variables;
 
 export const Footer = styled.footer`
   text-align: center;
@@ -19,10 +21,10 @@ export const Image = styled.img`
 `;
 
 export const CopyrightMe = styled.div`
-  color: ${vars.color.yellow};
+  color: ${color.yellow};
 `;
 
 export const CopyrightNintendo = styled.div`
-  color: ${vars.color.lightBlue};
+  color: ${color.lightBlue};
   font-size: 1rem;
 `;
