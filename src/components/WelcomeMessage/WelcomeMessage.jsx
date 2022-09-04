@@ -1,6 +1,9 @@
 import React from 'react';
+
+import Button from '../Button/Button';
 import Logo from '../Logo/Logo';
 import SeparatorBars from './SeparatorBars/SeparatorBars';
+
 import * as Styled from './WelcomeMessage.style';
 
 export default class WelcomeMessage extends React.Component {
@@ -37,7 +40,7 @@ export default class WelcomeMessage extends React.Component {
             <SeparatorBars />
 
             <div>
-              <button type="button" data-testid="continue-button">Continuar</button>
+              <Button type="button" title="Continuar" path="/pre-game" />
             </div>
           </Styled.LightBlueContainer>
         </Styled.BlueContainer>
