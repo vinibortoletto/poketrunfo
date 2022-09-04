@@ -1,6 +1,6 @@
 import vars from './variables';
 
-export const coloredContainer = (borderWidth, mainColor, shadowColor, padding) => (
+export const createColoredContainer = (borderWidth, mainColor, shadowColor, padding) => (
   `
     background-color: ${vars.color[mainColor]};
     border-bottom: ${borderWidth}px solid ${vars.color[shadowColor]};

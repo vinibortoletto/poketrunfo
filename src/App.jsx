@@ -9,6 +9,7 @@ import WelcomeMessage from './components/WelcomeMessage/WelcomeMessage';
 // Styles
 import './helpers/styles/reset.css';
 import GlobalStyles from './helpers/styles/Global.style';
+import Footer from './components/Footer/Footer';
 
 export default class App extends Component {
   render() {
@@ -17,9 +18,13 @@ export default class App extends Component {
         <GlobalStyles />
         <Header />
 
-        <Routes>
-          <Route path="/" element={<WelcomeMessage />} />
-        </Routes>
+        <main>
+          <Routes>
+            <Route path="/" element={<WelcomeMessage />} />
+          </Routes>
+        </main>
+
+        <Footer />
       </>
     );
   }

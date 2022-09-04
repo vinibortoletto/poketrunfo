@@ -14,7 +14,6 @@ const GlobalStyles = createGlobalStyle`
     font-size: 1.5rem;
     font-family: ${vars.fontFamily.special};
     padding: 0 1rem;
-    text-shadow: 0px 2px 3px ${vars.color.whiteShadow};
   }
 
   h1, h2 {
