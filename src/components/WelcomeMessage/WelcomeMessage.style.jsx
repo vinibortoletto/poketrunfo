@@ -3,6 +3,10 @@ import { createColoredContainer } from '../../helpers/styles/createColoredContai
 import { createTextShadow } from '../../helpers/styles/textShadow';
 
 export const YellowContainer = styled.section`
+  max-width: 50rem;
+  margin: 5rem auto 0 auto;
+
+
   ${createColoredContainer(10, 'yellow', 'yellowShadow', 0.5)};
   ${createTextShadow('whiteShadow')};
 `;
