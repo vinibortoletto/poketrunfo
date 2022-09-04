@@ -12,10 +12,10 @@ export const Socials = styled.div`
   justify-content: center;
   gap: 1rem;
   margin-bottom: 1rem;
+`;
 
-  img {
-    width: 2rem;
-  }
+export const Image = styled.img`
+  width: 2rem;
 `;
 
 export const CopyrightMe = styled.div`

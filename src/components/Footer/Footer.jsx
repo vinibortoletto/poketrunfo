@@ -12,15 +12,15 @@ export default class Footer extends React.Component {
       <Styled.Footer>
         <Styled.Socials>
           <a href="https://github.com/vinibortoletto">
-            <img src={githubLogo} alt="github logo" />
+            <Styled.Image src={githubLogo} alt="github logo" />
           </a>
 
           <a href="https://linkedin.com/i/vinicius-bortoletto">
-            <img src={linkedinLogo} alt="linkedin logo" />
+            <Styled.Image src={linkedinLogo} alt="linkedin logo" />
           </a>
 
           <a href="https://vinibortoletto.netlify.app/">
-            <img src={viniLogo} alt="vinicius bortoletto logo" />
+            <Styled.Image src={viniLogo} alt="vinicius bortoletto logo" />
           </a>
         </Styled.Socials>
 
