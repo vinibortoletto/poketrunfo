@@ -13,7 +13,7 @@ const variables = {
     lightBlueShadow: '#4986CD',
 
     // Yellow
-    yellow: '#FFCC01',
+    yellow: '#DFC254',
     yellowShadow: '#857431',
 
     // White
