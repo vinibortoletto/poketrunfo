@@ -1,15 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { string } from 'prop-types';
+import { string, shape } from 'prop-types';
 
 import * as Styled from './Button.style';
 
 export default class Button extends React.Component {
   render() {
-    const { title, type, path } = this.props;
+    const {
+      title,
+      type,
+      path,
+    } = this.props;
+
+    const currentPath = window.location.pathname;
 
     return (
-      <Styled.Button type={type}>
+      <Styled.Button type={type} currentPath={currentPath}>
         <Link to={path}>
           <Styled.YellowContainer>
             <Styled.BlueContainer>

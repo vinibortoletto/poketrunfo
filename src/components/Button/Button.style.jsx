@@ -15,13 +15,16 @@ export const BlueContainer = styled.div`
 `;
 
 export const Button = styled.button`
+  min-width: 10rem;
   color: ${color.white};
   ${textShadow('blueShadow')};
 
-  position: absolute;
-  left: 50%;
-  translate: -50%;
-
+  ${({ currentPath }) => (currentPath === '/' && `
+    position: absolute;
+    left: 50%;
+    translate: -50%;
+  `)}
+  
   &:active {
     ${BlueContainer} {
       ${coloredContainer(6, 'blue', 'blue', 0.5)};
