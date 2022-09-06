@@ -4,25 +4,25 @@ import { Route, Switch } from 'react-router-dom';
 
 // Components
 import Header from './components/Header/Header';
-import WelcomeMessage from './components/WelcomeMessage/WelcomeMessage';
+import Footer from './components/Footer/Footer';
+import Welcome from './pages/Welcome/Welcome';
+import PreGame from './pages/PreGame/PreGame';
 
 // Styles
 import './helpers/styles/reset.css';
 import GlobalStyles from './helpers/styles/Global.style';
-import Footer from './components/Footer/Footer';
 
 export default class App extends Component {
   render() {
-    const { pathname } = window.location;
-
     return (
       <>
         <GlobalStyles />
-        {pathname !== '/' && <Header />}
+        <Header />
 
         <main>
           <Switch>
-            <Route path="/" component={WelcomeMessage} />
+            <Route exact path="/" component={Welcome} />
+            <Route exact path="/pre-game" component={PreGame} />
           </Switch>
         </main>
 
