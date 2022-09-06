@@ -1,12 +1,12 @@
 import React from 'react';
 
-import Button from '../Button/Button';
-import Logo from '../Logo/Logo';
+import Button from '../../components/Button/Button';
+import Logo from '../../components/Logo/Logo';
 import SeparatorBars from './SeparatorBars/SeparatorBars';
 
-import * as Styled from './WelcomeMessage.style';
+import * as Styled from './Welcome.style';
 
-export default class WelcomeMessage extends React.Component {
+export default class Welcome extends React.Component {
   render() {
     return (
       <Styled.YellowContainer>

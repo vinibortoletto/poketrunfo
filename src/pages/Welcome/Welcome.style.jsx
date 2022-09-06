@@ -5,7 +5,7 @@ import { textShadow } from '../../helpers/styles/mixins/textShadow';
 
 export const YellowContainer = styled.section`
   max-width: 50rem;
-  margin: 5rem auto 0 auto;
+  margin: auto;
 
   ${coloredContainer(10, 'yellow', 'yellowShadow', 0.5)};
   ${textShadow('whiteShadow')};
