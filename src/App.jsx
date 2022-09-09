@@ -1,6 +1,7 @@
 // Libs
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import { string, shape } from 'prop-types';
 
 // Components
 import Header from './components/Header/Header';
@@ -14,16 +15,17 @@ import GlobalStyles from './helpers/styles/Global.style';
 
 export default class App extends Component {
   render() {
+    const { location: { pathname } } = this.props;
+
     return (
       <>
         <GlobalStyles />
-        <Header />
+
+        {pathname !== '/' && <Header />}
 
         <main>
-          <Switch>
-            <Route exact path="/" component={Welcome} />
-            <Route exact path="/pre-game" component={PreGame} />
-          </Switch>
+          <Route exact path="/" component={Welcome} />
+          <Route exact path="/pre-game" component={PreGame} />
         </main>
 
         <Footer />
@@ -31,3 +33,13 @@ export default class App extends Component {
     );
   }
 }
+
+App.defaultProps = {
+  location: {},
+};
+
+App.propTypes = {
+  location: shape({
+    pathname: string,
+  }),
+};
