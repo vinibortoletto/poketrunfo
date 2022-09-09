@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { string, shape } from 'prop-types';
 
-import * as Styled from './Button.style';
+import * as S from './Button.style';
 
 export default class Button extends React.Component {
   render() {
@@ -15,15 +15,15 @@ export default class Button extends React.Component {
     const currentPath = window.location.pathname;
 
     return (
-      <Styled.Button type={type} currentPath={currentPath}>
+      <S.Button type={type} currentPath={currentPath}>
         <Link to={path}>
-          <Styled.YellowContainer>
-            <Styled.BlueContainer>
+          <S.YellowContainer>
+            <S.BlueContainer>
               { title }
-            </Styled.BlueContainer>
-          </Styled.YellowContainer>
+            </S.BlueContainer>
+          </S.YellowContainer>
         </Link>
-      </Styled.Button>
+      </S.Button>
     );
   }
 }

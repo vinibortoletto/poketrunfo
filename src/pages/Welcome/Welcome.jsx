@@ -4,22 +4,22 @@ import Button from '../../components/Button/Button';
 import Logo from '../../components/Logo/Logo';
 import SeparatorBars from './SeparatorBars/SeparatorBars';
 
-import * as Styled from './Welcome.style';
+import * as S from './Welcome.style';
 
 export default class Welcome extends React.Component {
   render() {
     return (
-      <Styled.YellowContainer>
-        <Styled.BlueContainer>
-          <Styled.LightBlueContainer>
-            <Styled.Title>
+      <S.YellowContainer>
+        <S.BlueContainer>
+          <S.LightBlueContainer>
+            <S.Title>
               <h1>Bem-vinde ao</h1>
               <Logo />
-            </Styled.Title>
+            </S.Title>
 
             <SeparatorBars />
 
-            <Styled.Content>
+            <S.Content>
               <h2>Como jogar:</h2>
 
               <p>Um baralho de cartas é gerado aleatoriamente para você e o computador.</p>
@@ -35,16 +35,16 @@ export default class Welcome extends React.Component {
                 Você também pode gerar novos baralhos aleatórios,
                 ou até remover cartas e criar sua própria.
               </p>
-            </Styled.Content>
+            </S.Content>
 
             <SeparatorBars />
 
             <div>
               <Button type="button" title="Continuar" path="/pre-game" />
             </div>
-          </Styled.LightBlueContainer>
-        </Styled.BlueContainer>
-      </Styled.YellowContainer>
+          </S.LightBlueContainer>
+        </S.BlueContainer>
+      </S.YellowContainer>
     );
   }
 }

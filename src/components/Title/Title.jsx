@@ -1,13 +1,13 @@
 import React from 'react';
 import { string } from 'prop-types';
-import * as Styled from './Title.style';
+import * as S from './Title.style';
 
 export default class Title extends React.Component {
   render() {
     const { text } = this.props;
 
     return (
-      <Styled.Title>{text}</Styled.Title>
+      <S.Title>{text}</S.Title>
     );
   }
 }

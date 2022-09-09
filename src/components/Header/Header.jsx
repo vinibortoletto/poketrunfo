@@ -1,13 +1,13 @@
 import React from 'react';
 import Logo from '../Logo/Logo';
-import * as Styled from './Header.style';
+import * as S from './Header.style';
 
 export default class Header extends React.Component {
   render() {
     return (
-      <Styled.Header>
+      <S.Header>
         <Logo />
-      </Styled.Header>
+      </S.Header>
     );
   }
 }

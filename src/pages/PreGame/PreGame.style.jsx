@@ -28,3 +28,6 @@ export const Button = styled.button`
     border-bottom: 0;
   }
 `;
+
+export const CardList = styled.div`
+`;

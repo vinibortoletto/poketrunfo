@@ -5,36 +5,36 @@ import Button from '../../components/Button/Button';
 import Card from '../../components/Card/Card';
 import Title from '../../components/Title/Title';
 
-import * as Styled from './PreGame.style';
+import * as S from './PreGame.style';
 
 export default class PreGame extends React.Component {
   render() {
     return (
-      <Styled.Section>
+      <S.Section>
         <Title text="este será seu deck" />
 
         <div>
-          <Styled.Button>
+          <S.Button>
             Gerar novo deck aleatório
-          </Styled.Button>
+          </S.Button>
 
-          <Styled.Button>
+          <S.Button>
             <Link to="/create-new-card">
               Criar nova carta
             </Link>
-          </Styled.Button>
+          </S.Button>
         </div>
 
-        {/* <div> */}
-        <Card />
-        {/* </div> */}
+        <S.CardList>
+          <Card />
+        </S.CardList>
 
         <Button
           title="Jogar"
           type="button"
           path="/game"
         />
-      </Styled.Section>
+      </S.Section>
     );
   }
 }
