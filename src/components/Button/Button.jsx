@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { string, shape } from 'prop-types';
+import { string } from 'prop-types';
 
 import * as S from './Button.style';
 

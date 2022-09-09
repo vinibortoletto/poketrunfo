@@ -23,6 +23,10 @@ export const Button = styled.button`
     position: absolute;
     left: 50%;
     translate: -50%;
+    
+    ${media(500)} {
+      translate: -50% 2.5rem;
+    }
   `)}
   
   &:active {
@@ -33,7 +37,5 @@ export const Button = styled.button`
     }
   }
 
-  ${media(500)} {
-    translate: -50% 2.5rem;
-  }
+
 `;
