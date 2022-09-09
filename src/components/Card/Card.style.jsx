@@ -70,18 +70,7 @@ export const StatPoints = styled.div`
   padding: 0 1rem;
   color: ${color.darkBlue};
   text-align: center;
-`;
 
-export const TypeList = styled.ul`
-  display: flex;
-  gap: 0.5rem;
-  margin: 1rem 0.5rem 0 0.5rem;
-`;
-
-export const TypeItem = styled.li`
-  ${coloredContainer(5, 'yellow', 'yellowShadow', 0)};
-  font-size: 1rem;
-  width: 100%;
 `;
 
 export const Type = styled.div`
