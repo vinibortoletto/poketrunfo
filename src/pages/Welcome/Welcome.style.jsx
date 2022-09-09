@@ -21,10 +21,10 @@ export const BlueContainer = styled.div`
 `;
 
 export const LightBlueContainer = styled.div`
-  ${coloredContainer(6, 'lightBlue', 'lightBlueShadow', 0.5)};
+  ${coloredContainer(6, 'babyBlue', 'babyBlueShadow', 0.5)};
 
   ${media(500)} {
-    ${coloredContainer(6, 'lightBlue', 'lightBlueShadow', 1)};
+    ${coloredContainer(6, 'babyBlue', 'babyBlueShadow', 1)};
   }
 `;
 

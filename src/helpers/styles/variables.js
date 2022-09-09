@@ -5,20 +5,22 @@ const variables = {
   },
 
   color: {
-    // Blue
-    darkBlue: '#0D1927',
+    // blue
+    blueDark: '#0D1927',
     blue: '#2E6EB8',
-    blueShadow: '#355376',
-    lightBlue: '#80B1EA',
-    lightBlueShadow: '#4986CD',
+    blueShadow: '#214671',
 
-    // Yellow
+    // baby blue
+    babyBlue: '#80B1EA',
+    babyBlueShadow: '#4986CD',
+
+    // yellow
     yellow: '#DFC254',
     yellowShadow: '#857431',
 
-    // White
-    white: '#D3DCE7',
-    whiteShadow: '#6791C3',
+    // white
+    white: '#B8D1EF',
+    whiteShadow: '#6B9CD6',
   },
 };
 

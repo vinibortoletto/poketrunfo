@@ -27,7 +27,7 @@ export const Button = styled.button`
   
   &:active {
     ${BlueContainer} {
-      ${coloredContainer(6, 'blue', 'blue', 0.5)};
+      ${coloredContainer(6, 'blue', 'blueShadow', 0.5)};
       border-top: 3px solid ${color.blueShadow};
       border-bottom: 3px solid ${color.blue};
     }

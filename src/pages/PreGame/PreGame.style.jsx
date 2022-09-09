@@ -15,16 +15,16 @@ export const Button = styled.button`
   padding: 1rem;
   margin-bottom: 1rem;
   
-  background-color: ${color.lightBlue};
+  background-color: ${color.babyBlue};
   color: ${color.darkBlue};
-  ${textShadow('lightBlueShadow')}
+  ${textShadow('babyBlueShadow')}
 
-  border-left: 3px solid ${color.lightBlueShadow};
-  border-right: 3px solid ${color.lightBlueShadow};
-  border-bottom: 5px solid ${color.lightBlueShadow};
+  border-left: 3px solid ${color.babyBlueShadow};
+  border-right: 3px solid ${color.babyBlueShadow};
+  border-bottom: 5px solid ${color.babyBlueShadow};
 
   &:active {
-    border: 3px solid ${color.lightBlue};
+    border: 3px solid ${color.babyBlue};
     border-bottom: 0;
   }
 `;

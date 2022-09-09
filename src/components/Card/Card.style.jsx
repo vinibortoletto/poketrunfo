@@ -16,7 +16,7 @@ export const BlueContainer = styled.div`
 `;
 
 export const Content = styled.div`
-  ${coloredContainer(5, 'lightBlue', 'lightBlueShadow', 0.5)};
+  ${coloredContainer(5, 'babyBlue', 'babyBlueShadow', 0.5)};
 `;
 
 export const Title = styled.div`
@@ -33,7 +33,6 @@ export const ImagesContainer = styled.div`
 
 export const Background = styled.img`
   width: 100%;
-  border: 3px solid ${color.blue};
   border-top: 0;
 `;
 

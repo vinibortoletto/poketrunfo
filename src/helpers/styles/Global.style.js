@@ -1,18 +1,20 @@
 import { createGlobalStyle } from 'styled-components/macro';
-import vars from './variables';
+import variables from './variables';
 import './fonts.css';
+
+const { color, fontFamily } = variables;
 
 const GlobalStyles = createGlobalStyle`
   * {
-    font-family: ${vars.fontFamily.special};
+    font-family: ${fontFamily.special};
     box-sizing: border-box;
   }
 
   body {
-    background-color: ${vars.color.darkBlue};
-    color:  ${vars.color.darkBlue};
+    background-color: ${color.blueDark};
+    color:  ${color.blueDark};
     font-size: 1.5rem;
-    font-family: ${vars.fontFamily.special};
+    font-family: ${fontFamily.special};
     padding: 0 1rem;
   }
 
