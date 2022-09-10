@@ -12,8 +12,13 @@ import PreGame from './pages/PreGame/PreGame';
 // Styles
 import './helpers/styles/reset.css';
 import GlobalStyles from './helpers/styles/Global.style';
+import { getAllPokemons } from './api/pokeapi';
 
 export default class App extends Component {
+  componentDidMount() {
+    getAllPokemons();
+  }
+
   render() {
     const { location: { pathname } } = this.props;
 
