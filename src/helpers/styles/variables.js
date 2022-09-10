@@ -1,8 +1,6 @@
 const variables = {
   // Fonts
   fontFamily: {
-    // special: 'VT323, monospace',
-    // special: 'FFF Forward',
     special: 'Neue Pixel Sans',
   },
 
