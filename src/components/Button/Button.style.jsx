@@ -28,6 +28,10 @@ export const Button = styled.button`
       translate: -50% 2.5rem;
     }
   `)}
+
+  ${({ currentPath }) => (currentPath !== '/' && `
+    margin-top: 3rem;
+  `)}
   
   &:active {
     ${BlueContainer} {
