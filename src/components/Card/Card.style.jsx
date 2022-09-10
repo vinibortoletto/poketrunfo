@@ -52,11 +52,12 @@ export const StatList = styled.ul`
   display: grid;
   gap: 0.2rem;
   margin: 0 0.5rem;
-  font-size: 1.3rem;
+  font-size: 1rem;
 `;
 
 export const Type = styled.div`
   ${coloredContainer(5, 'yellow', 'yellowShadow', 0)};
+  ${textShadow('yellowShadow')};
   width: fit-content;
   margin: 1rem 0.5rem 0.5rem;
   padding: 0 0.5rem;
