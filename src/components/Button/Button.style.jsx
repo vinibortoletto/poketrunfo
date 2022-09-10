@@ -40,6 +40,4 @@ export const Button = styled.button`
       border-bottom: 3px solid ${color.blue};
     }
   }
-
-
 `;

@@ -30,4 +30,5 @@ export const Button = styled.button`
 `;
 
 export const CardList = styled.div`
+  margin-top: 2rem;
 `;
