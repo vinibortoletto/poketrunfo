@@ -21,6 +21,10 @@ const variables = {
     // white
     white: '#B8D1EF',
     whiteShadow: '#6B9CD6',
+
+    // redd
+    red: '#B04141',
+    redShadow: '#581F1F',
   },
 };
 
