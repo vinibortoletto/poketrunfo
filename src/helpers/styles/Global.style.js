@@ -16,10 +16,15 @@ const GlobalStyles = createGlobalStyle`
     font-size: 1.5rem;
     font-family: ${fontFamily.special};
     padding: 0 1rem;
+    overflow-x: hidden;
   }
 
   h1, h2 {
     font-weight: normal;
+  }
+  
+  .slick-list {
+    overflow: unset;
   }
 `;
 

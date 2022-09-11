@@ -5,9 +5,7 @@ import variables from '../../helpers/styles/variables';
 const { color } = variables;
 
 export const Section = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
 `;
 
 export const Button = styled.button`
@@ -30,5 +28,5 @@ export const Button = styled.button`
 `;
 
 export const CardList = styled.div`
-  margin-top: 2rem;
+  margin: 2rem -1rem 0 -1rem;
 `;

@@ -9,6 +9,7 @@ export const YellowContainer = styled.div`
   ${coloredContainer(5, 'yellow', 'yellowShadow', 0.5)};
   width: 100%;
   max-width: 20rem;
+  margin: 0 1rem 0 1rem;
   position: relative;
 `;
 
@@ -27,6 +28,7 @@ export const RemoveButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  
   position: absolute;
   top: -1rem;
   right: -1rem;

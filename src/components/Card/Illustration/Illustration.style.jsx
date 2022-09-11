@@ -7,6 +7,7 @@ const { color } = variables;
 export const Container = styled.div`
   ${coloredContainer(5, 'white', 'whiteShadow', 0.2)};
   margin: 0 0.5rem 2rem 0.5rem;
+  position: relative;
 `;
 
 export const Background = styled.img`
@@ -17,6 +18,7 @@ export const Background = styled.img`
 export const Pokemon = styled.img`
   width: 9rem;
   position: absolute;
-  translate: -9rem 1rem;
+  top: 1rem;
+  right: 0;
   filter: drop-shadow(0px 3px ${color.blueShadow});
 `;
