@@ -24,6 +24,8 @@
         "class-methods-use-this": "off",
         "react/state-in-constructor": "off",
         "no-unused-vars": "warn",
-        "react/jsx-props-no-spreading": "off"
+        "react/jsx-props-no-spreading": "off",
+        "react/no-unused-state": "warn",
+        "no-await-in-loop": "off"
     }
 }
