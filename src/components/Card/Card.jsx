@@ -1,3 +1,4 @@
+import { string, shape, arrayOf } from 'prop-types';
 import React from 'react';
 import closeIcon from '../../images/close-icon.png';
 import Illustration from './Illustration/Illustration';
@@ -6,27 +7,46 @@ import * as S from './Card.style';
 
 export default class Card extends React.Component {
   render() {
+    const {
+      sprites: {
+        other: {
+          'official-artwork': {
+            front_default: pokemonImage,
+          },
+        },
+      },
+      name: pokemonName,
+      stats,
+      types,
+    } = this.props;
+
+    const { name: pokemonType } = types[0].type;
+
     return (
       <S.YellowContainer>
         <S.BlueContainer>
           <S.Content>
             <S.RemoveButton>
-              <img src={closeIcon} alt="um ícone em forma de x branco" />
+              <img src={closeIcon} alt={`imagem do pokemon ${pokemonName}`} />
             </S.RemoveButton>
 
-            <S.Title>Pikachu</S.Title>
+            <S.Title>{pokemonName}</S.Title>
 
-            <Illustration />
+            <Illustration pokemonImage={pokemonImage} />
 
             <S.StatList>
-              <StatItem statName="HP" statPoints="99" />
-              <StatItem statName="Ataque" statPoints="99" />
-              <StatItem statName="Defesa" statPoints="99" />
-              <StatItem statName="Velocidade" statPoints="99" />
+              {stats.map(({ base_stat: statPoints, stat }) => (
+                !stat.name.includes('special') && (
+                <StatItem
+                  key={stat.name}
+                  statName={stat.name}
+                  statPoints={statPoints}
+                />
+                )))}
             </S.StatList>
 
-            <S.Type>
-              electric
+            <S.Type type={pokemonType}>
+              {pokemonType}
             </S.Type>
 
           </S.Content>
@@ -35,3 +55,10 @@ export default class Card extends React.Component {
     );
   }
 }
+
+Card.propTypes = {
+  sprites: shape({}).isRequired,
+  name: string.isRequired,
+  stats: arrayOf(shape({})).isRequired,
+  types: arrayOf(shape({})).isRequired,
+};

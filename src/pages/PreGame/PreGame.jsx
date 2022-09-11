@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { arrayOf, shape } from 'prop-types';
 
 import Button from '../../components/Button/Button';
 import Card from '../../components/Card/Card';
@@ -9,6 +10,8 @@ import * as S from './PreGame.style';
 
 export default class PreGame extends React.Component {
   render() {
+    const { deck } = this.props;
+
     return (
       <S.Section>
         <Title text="este será seu deck" />
@@ -26,7 +29,9 @@ export default class PreGame extends React.Component {
         </div>
 
         <S.CardList>
-          <Card />
+          {deck.map((card) => (
+            <Card key={card.id} {...card} />
+          ))}
         </S.CardList>
 
         <Button
@@ -38,3 +43,7 @@ export default class PreGame extends React.Component {
     );
   }
 }
+
+PreGame.propTypes = {
+  deck: arrayOf(shape({})).isRequired,
+};

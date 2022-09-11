@@ -46,6 +46,7 @@ export const Title = styled.div`
   ${textShadow('whiteShadow')}
   text-align: center;
   margin-bottom: 1rem;
+  text-transform: capitalize;
 `;
 
 export const StatList = styled.ul`
@@ -56,11 +57,15 @@ export const StatList = styled.ul`
 `;
 
 export const Type = styled.div`
-  ${coloredContainer(5, 'yellow', 'yellowShadow', 0)};
-  ${textShadow('yellowShadow')};
+  ${({ type }) => `
+    ${coloredContainer(5, type, `${type}Shadow`, 0)};
+    ${textShadow(`${type}Shadow`)};
+  `}
+  
   width: fit-content;
   margin: 1rem 0.5rem 0.5rem;
   padding: 0 0.5rem;
   font-size: 1rem;
   text-align: center;
+  color: ${color.white};
 `;

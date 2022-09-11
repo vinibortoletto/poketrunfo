@@ -1,4 +1,4 @@
-import { string } from 'prop-types';
+import { string, number } from 'prop-types';
 import React from 'react';
 import * as S from './StatItem.style';
 
@@ -17,5 +17,5 @@ export default class StatItem extends React.Component {
 
 StatItem.propTypes = {
   statName: string.isRequired,
-  statPoints: string.isRequired,
+  statPoints: number.isRequired,
 };

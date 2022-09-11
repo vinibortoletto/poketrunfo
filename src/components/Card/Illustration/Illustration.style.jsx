@@ -15,8 +15,8 @@ export const Background = styled.img`
 `;
 
 export const Pokemon = styled.img`
-  width: 6rem;
+  width: 9rem;
   position: absolute;
-  translate: -5rem 2rem;
+  translate: -9rem 1rem;
   filter: drop-shadow(0px 3px ${color.blueShadow});
 `;

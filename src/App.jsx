@@ -35,8 +35,6 @@ export default class App extends Component {
     const randomPokemonInfo = await fetchPokemonInfo(randomPokemon.name);
     const randomDeck = [randomPokemonInfo];
 
-    console.log(randomPokemonInfo);
-
     for (let i = 0; randomDeck.length !== 20; i += 1) {
       const newRandomPokemon = await this.getRandomPokemon();
       const hasPokemon = randomDeck.some(({ name }) => name === newRandomPokemon.name);
