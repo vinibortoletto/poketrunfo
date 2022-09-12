@@ -13,12 +13,13 @@ import Title from '../../components/Title/Title';
 import * as S from './PreGame.style';
 
 const SLIDER_SETTINGS = {
-  className: 'slider variable-width',
+  className: 'center',
   slidesToShow: 1,
   slidesToScroll: 1,
   variableWidth: true,
   centerMode: true,
   arrows: false,
+  infinite: true,
 };
 
 export default class PreGame extends React.Component {

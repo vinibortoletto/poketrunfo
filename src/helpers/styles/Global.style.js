@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components/macro';
 import variables from './variables';
 import './fonts.css';
+import { media } from './mixins/media';
 
 const { color, fontFamily } = variables;
 
@@ -28,6 +29,14 @@ const GlobalStyles = createGlobalStyle`
   
   .slick-list {
     overflow: unset;
+  }
+
+  .slick-track {
+    height: 13rem;
+    
+    ${media(388)} {
+     height: auto;
+    }
   }
 `;
 
