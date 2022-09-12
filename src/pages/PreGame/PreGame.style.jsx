@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro';
+import { media } from '../../helpers/styles/mixins/media';
 import { textShadow } from '../../helpers/styles/mixins/textShadow';
 import variables from '../../helpers/styles/variables';
 
@@ -28,5 +29,12 @@ export const Button = styled.button`
 `;
 
 export const CardList = styled.div`
-  margin: 2rem -1rem 0 -1rem;
+  margin-top: 2rem;
+
+  ${media(1024)} {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(233px, 1fr));
+    justify-items: center;
+    gap: 1rem
+  }
 `;

@@ -11,12 +11,15 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
+    max-width: 80rem;
+    margin: auto;
+    padding: 0 1rem;
+    overflow-x: hidden;
     background-color: ${color.blueDark};
     color:  ${color.blueDark};
     font-size: 1.5rem;
     font-family: ${fontFamily.special};
-    padding: 0 1rem;
-    overflow-x: hidden;
+    
   }
 
   h1, h2 {

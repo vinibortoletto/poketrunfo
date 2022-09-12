@@ -15,38 +15,26 @@ import * as S from './PreGame.style';
 const SLIDER_SETTINGS = {
   className: 'slider variable-width',
   slidesToShow: 1,
-  slidesToScroll: 5,
+  slidesToScroll: 1,
   variableWidth: true,
+  centerMode: true,
   arrows: false,
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-      },
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        initialSlide: 2,
-      },
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-      },
-    },
-  ],
 };
 
 export default class PreGame extends React.Component {
+  state = {
+    width: window.innerWidth,
+  };
+
+  componentDidMount() {
+    window.addEventListener('resize', () => {
+      this.setState({ width: window.innerWidth });
+    });
+  }
+
   render() {
     const { deck } = this.props;
+    const { width } = this.state;
 
     return (
       <S.Section>
@@ -65,11 +53,21 @@ export default class PreGame extends React.Component {
         </div>
 
         <S.CardList>
-          <Slider {...SLIDER_SETTINGS}>
-            {deck.map((card) => (
-              <Card key={card.id} {...card} />
-            ))}
-          </Slider>
+          {
+            width < 1024 ? (
+              <Slider {...SLIDER_SETTINGS}>
+                {deck.map((card) => (
+                  <Card key={card.id} {...card} />
+                ))}
+              </Slider>
+            )
+              : (
+                deck.map((card) => (
+                  <Card key={card.id} {...card} />
+                ))
+              )
+          }
+
         </S.CardList>
 
         <Button

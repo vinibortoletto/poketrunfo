@@ -14,14 +14,12 @@ export const StatItem = styled.li`
 export const StatName = styled.div`
   ${coloredContainer(5, 'blue', 'blueShadow', 0)};
   ${textShadow('blueShadow')};
-  padding: 0 1rem;
   color: ${color.white};
 `;
 
 export const StatPoints = styled.div`
   ${coloredContainer(5, 'yellow', 'yellowShadow', 0)};
   ${textShadow('yellowShadow')};
-  padding: 0 1rem;
   color: ${color.darkBlue};
   text-align: center;
 `;

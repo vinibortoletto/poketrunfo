@@ -8,30 +8,31 @@ const { color } = variables;
 export const YellowContainer = styled.div`
   ${coloredContainer(5, 'yellow', 'yellowShadow', 0.5)};
   width: 100%;
-  max-width: 20rem;
-  margin: 0 1rem 0 1rem;
+  max-width: 15rem;
   position: relative;
+  margin: 0 0.5rem 0.5rem;
 `;
 
 export const BlueContainer = styled.div`
-  ${coloredContainer(5, 'blue', 'blueShadow', 1.5)};
+  ${coloredContainer(5, 'blue', 'blueShadow', 0.5)};
 `;
 
 export const Content = styled.div`
   ${coloredContainer(5, 'babyBlue', 'babyBlueShadow', 0.5)};
+  padding: 0.5;
 `;
 
 export const RemoveButton = styled.button`
   ${coloredContainer(5, 'red', 'redShadow', 0.5)};
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
   
   position: absolute;
-  top: -1rem;
-  right: -1rem;
+  top: -0.5rem;
+  right: -0.5rem;
 
   &:active {
     border: 3px solid ${color.redShadow};
@@ -54,7 +55,6 @@ export const Title = styled.div`
 export const StatList = styled.ul`
   display: grid;
   gap: 0.2rem;
-  margin: 0 0.5rem;
   font-size: 1rem;
 `;
 
@@ -65,8 +65,8 @@ export const Type = styled.div`
   `}
   
   width: fit-content;
-  margin: 1rem 0.5rem 0.5rem;
   padding: 0 0.5rem;
+  margin-top: 0.5rem;
   font-size: 1rem;
   text-align: center;
   color: ${color.white};
