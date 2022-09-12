@@ -40,7 +40,7 @@ export default class PreGame extends React.Component {
       <S.Section>
         <Title text="este será seu deck" />
 
-        <div>
+        <S.ButtonsContainer>
           <S.Button>
             Gerar novo deck aleatório
           </S.Button>
@@ -50,7 +50,7 @@ export default class PreGame extends React.Component {
               Criar nova carta
             </Link>
           </S.Button>
-        </div>
+        </S.ButtonsContainer>
 
         <S.CardList>
           {

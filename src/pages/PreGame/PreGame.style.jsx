@@ -9,10 +9,23 @@ export const Section = styled.section`
   text-align: center;
 `;
 
+export const ButtonsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+
+  ${media(600)} {
+    flex-direction: row;
+  }
+`;
+
 export const Button = styled.button`
   width:100%;
+  max-width: 20rem;
   padding: 1rem;
-  margin-bottom: 1rem;
+  font-size: 1.2rem;
   
   background-color: ${color.babyBlue};
   color: ${color.darkBlue};
