@@ -41,11 +41,11 @@ export default class Card extends React.Component {
             <S.StatList>
               {stats.map(({ base_stat: statPoints, stat }) => (
                 !stat.name.includes('special') && (
-                <StatItem
-                  key={stat.name}
-                  statName={stat.name}
-                  statPoints={statPoints}
-                />
+                  <StatItem
+                    key={stat.name}
+                    statName={stat.name}
+                    statPoints={statPoints}
+                  />
                 )))}
             </S.StatList>
 

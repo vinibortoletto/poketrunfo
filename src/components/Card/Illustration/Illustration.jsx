@@ -2,7 +2,6 @@
 
 import React from 'react';
 import cardBackground from '../../../images/card-background.png';
-import pikachu from '../../../images/pikachu.png';
 import * as S from './Illustration.style';
 
 export default class Illustration extends React.Component {

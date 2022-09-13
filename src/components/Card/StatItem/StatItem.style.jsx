@@ -15,6 +15,8 @@ export const StatName = styled.div`
   ${coloredContainer(5, 'blue', 'blueShadow', 0)};
   ${textShadow('blueShadow')};
   color: ${color.white};
+  text-align: left;
+  padding: 0 0.5rem;
 `;
 
 export const StatPoints = styled.div`
