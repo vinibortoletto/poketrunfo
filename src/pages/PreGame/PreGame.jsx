@@ -24,14 +24,20 @@ const SLIDER_SETTINGS = {
 
 export default class PreGame extends React.Component {
   state = {
-    width: window.innerWidth,
+    width: 0,
   };
 
   componentDidMount() {
+    this.getWindowWidth();
+  }
+
+  getWindowWidth = () => {
+    this.setState({ width: window.innerWidth });
+
     window.addEventListener('resize', () => {
       this.setState({ width: window.innerWidth });
     });
-  }
+  };
 
   render() {
     const { deck } = this.props;
@@ -53,23 +59,23 @@ export default class PreGame extends React.Component {
           </S.Button>
         </S.ButtonsContainer>
 
-        <S.CardList>
+        <S.Deck>
           {
-            width < 1024 ? (
-              <Slider {...SLIDER_SETTINGS}>
-                {deck.map((card) => (
-                  <Card key={card.id} {...card} />
-                ))}
-              </Slider>
-            )
+            width < 1024
+              ? (
+                <Slider {...SLIDER_SETTINGS}>
+                  {deck.map((card) => (
+                    <Card key={card.id} {...card} />
+                  ))}
+                </Slider>
+              )
               : (
                 deck.map((card) => (
                   <Card key={card.id} {...card} />
                 ))
               )
           }
-
-        </S.CardList>
+        </S.Deck>
 
         <Button
           title="Jogar"

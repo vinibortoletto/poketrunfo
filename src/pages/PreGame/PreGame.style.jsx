@@ -41,7 +41,7 @@ export const Button = styled.button`
   }
 `;
 
-export const CardList = styled.div`
+export const Deck = styled.div`
   margin-top: 2rem;
 
   ${media(1024)} {
