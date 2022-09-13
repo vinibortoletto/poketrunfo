@@ -59,7 +59,7 @@ export default class App extends Component {
   };
 
   render() {
-    const { removeCard } = this;
+    const { getRandomDeck, removeCard } = this;
     const { deck } = this.state;
     const { location: { pathname } } = this.props;
 
@@ -79,6 +79,7 @@ export default class App extends Component {
                 {...props}
                 deck={deck}
                 removeCard={removeCard}
+                getRandomDeck={getRandomDeck}
               />
             )}
           />

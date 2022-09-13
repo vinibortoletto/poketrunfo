@@ -36,7 +36,9 @@ export default class PreGame extends React.Component {
   };
 
   render() {
-    const { deck, history, removeCard } = this.props;
+    const {
+      deck, history, removeCard, getRandomDeck,
+    } = this.props;
     const { width } = this.state;
     const deckIsFullMsg = 'Remova alguma carta antes de criar uma nova.';
     const createCardMsg = 'Crie uma carta.';
@@ -47,7 +49,7 @@ export default class PreGame extends React.Component {
         <Title text="este será seu deck" />
 
         <S.ButtonsContainer>
-          <S.Button type="button">
+          <S.Button type="button" onClick={getRandomDeck}>
             Gerar novo deck aleatório
           </S.Button>
 
@@ -93,4 +95,5 @@ PreGame.propTypes = {
   deck: arrayOf(shape({})).isRequired,
   history: shape({}).isRequired,
   removeCard: func.isRequired,
+  getRandomDeck: func.isRequired,
 };
