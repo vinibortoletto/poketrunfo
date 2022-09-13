@@ -22,7 +22,7 @@ export const ButtonsContainer = styled.div`
 `;
 
 export const Button = styled.button`
-  width:100%;
+  width: 100%;
   max-width: 20rem;
   padding: 1rem;
   font-size: 1.2rem;
@@ -42,7 +42,7 @@ export const Button = styled.button`
 `;
 
 export const Deck = styled.div`
-  margin-top: 2rem;
+  margin: 2rem -1rem 0 -1rem;
 
   ${media(1024)} {
     display: grid;

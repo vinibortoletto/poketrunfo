@@ -10,7 +10,7 @@ export const YellowContainer = styled.div`
   width: 100%;
   max-width: 15rem;
   position: relative;
-  margin: 0 0.5rem 0.5rem;
+  margin: 1rem 0.5rem;
 `;
 
 export const BlueContainer = styled.div`
@@ -19,7 +19,6 @@ export const BlueContainer = styled.div`
 
 export const Content = styled.div`
   ${coloredContainer(5, 'babyBlue', 'babyBlueShadow', 0.5)};
-  padding: 0.5;
 `;
 
 export const RemoveButton = styled.button`
