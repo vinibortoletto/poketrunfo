@@ -13,6 +13,7 @@ import PreGame from './pages/PreGame/PreGame';
 import './helpers/styles/reset.css';
 import GlobalStyles from './helpers/styles/Global.style';
 import { fetchFirstGenPokemons, fetchPokemonInfo } from './api/pokeapi';
+import CreateNewCard from './pages/CreateNewCard/CreateNewCard';
 
 export default class App extends Component {
   state = {
@@ -24,6 +25,16 @@ export default class App extends Component {
     if (localDeck) this.setState({ deck: [...localDeck] });
     else this.getRandomDeck();
   }
+
+  componentDidUpdate(prevProps) {
+    this.scrollToTopOnRouteChange(prevProps);
+  }
+
+  scrollToTopOnRouteChange = (prevProps) => {
+    const { location: { pathname: currPathname } } = this.props;
+    const prevPathname = prevProps.location.pathname;
+    if (currPathname !== prevPathname) window.scrollTo(0, 0);
+  };
 
   getRandomPokemon = async () => {
     const deck = await fetchFirstGenPokemons();
@@ -83,6 +94,7 @@ export default class App extends Component {
               />
             )}
           />
+          <Route exact path="/create-new-card" render={() => <CreateNewCard />} />
         </main>
 
         <Footer />
