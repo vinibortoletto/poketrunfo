@@ -1,4 +1,6 @@
-import { string, shape, arrayOf } from 'prop-types';
+import {
+  string, shape, arrayOf, func, number,
+} from 'prop-types';
 import React from 'react';
 import closeIcon from '../../images/close-icon.png';
 import Illustration from './Illustration/Illustration';
@@ -18,6 +20,8 @@ export default class Card extends React.Component {
       name: pokemonName,
       stats,
       types,
+      id,
+      removeCard,
     } = this.props;
 
     const { name: pokemonType } = types[0].type;
@@ -26,7 +30,7 @@ export default class Card extends React.Component {
       <S.YellowContainer>
         <S.BlueContainer>
           <S.Content>
-            <S.RemoveButton>
+            <S.RemoveButton onClick={() => removeCard(id)}>
               <img src={closeIcon} alt={`imagem do pokemon ${pokemonName}`} />
             </S.RemoveButton>
 
@@ -61,4 +65,6 @@ Card.propTypes = {
   name: string.isRequired,
   stats: arrayOf(shape({})).isRequired,
   types: arrayOf(shape({})).isRequired,
+  id: number.isRequired,
+  removeCard: func.isRequired,
 };

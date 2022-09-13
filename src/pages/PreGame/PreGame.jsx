@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { arrayOf, shape } from 'prop-types';
+import { arrayOf, shape, func } from 'prop-types';
 
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -31,29 +30,34 @@ export default class PreGame extends React.Component {
 
   getWindowWidth = () => {
     this.setState({ width: window.innerWidth });
-
     window.addEventListener('resize', () => {
       this.setState({ width: window.innerWidth });
     });
   };
 
   render() {
-    const { deck } = this.props;
+    const { deck, history, removeCard } = this.props;
     const { width } = this.state;
+    const deckIsFullMsg = 'Remova alguma carta antes de criar uma nova.';
+    const createCardMsg = 'Crie uma carta.';
+    const deckIsFull = deck.length === 10;
 
     return (
       <S.Section>
         <Title text="este será seu deck" />
 
         <S.ButtonsContainer>
-          <S.Button>
+          <S.Button type="button">
             Gerar novo deck aleatório
           </S.Button>
 
-          <S.Button>
-            <Link to="/create-new-card">
-              Criar nova carta
-            </Link>
+          <S.Button
+            type="button"
+            disabled={deckIsFull}
+            onClick={() => history.push('/create-new-card')}
+          >
+            <span>{deckIsFull ? deckIsFullMsg : createCardMsg}</span>
+            <span>{` (${deck.length}/10)`}</span>
           </S.Button>
         </S.ButtonsContainer>
 
@@ -63,13 +67,13 @@ export default class PreGame extends React.Component {
               ? (
                 <Slider {...SLIDER_SETTINGS}>
                   {deck.map((card) => (
-                    <Card key={card.id} {...card} />
+                    <Card key={card.id} {...card} removeCard={removeCard} />
                   ))}
                 </Slider>
               )
               : (
                 deck.map((card) => (
-                  <Card key={card.id} {...card} />
+                  <Card key={card.id} {...card} removeCard={removeCard} />
                 ))
               )
           }
@@ -87,4 +91,6 @@ export default class PreGame extends React.Component {
 
 PreGame.propTypes = {
   deck: arrayOf(shape({})).isRequired,
+  history: shape({}).isRequired,
+  removeCard: func.isRequired,
 };

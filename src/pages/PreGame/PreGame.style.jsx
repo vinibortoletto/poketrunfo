@@ -34,11 +34,20 @@ export const Button = styled.button`
   border-left: 3px solid ${color.babyBlueShadow};
   border-right: 3px solid ${color.babyBlueShadow};
   border-bottom: 5px solid ${color.babyBlueShadow};
+  cursor: pointer;
 
-  &:active {
-    border: 3px solid ${color.babyBlue};
-    border-bottom: 0;
-  }
+  ${({ disabled }) => (
+    disabled
+      ? `
+        opacity: 0.5;
+        border: none;
+        `
+      : `
+      &:active {
+        border: 3px solid ${color.babyBlue};
+        border-bottom: 0;
+      }  
+  `)}
 `;
 
 export const Deck = styled.div`

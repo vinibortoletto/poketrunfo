@@ -20,7 +20,9 @@ export default class App extends Component {
   };
 
   async componentDidMount() {
-    this.getRandomDeck();
+    const localDeck = JSON.parse(localStorage.getItem('deck'));
+    if (localDeck) this.setState({ deck: [...localDeck] });
+    else this.getRandomDeck();
   }
 
   getRandomPokemon = async () => {
@@ -45,12 +47,21 @@ export default class App extends Component {
       }
     }
 
+    localStorage.setItem('deck', JSON.stringify(randomDeck));
     this.setState({ deck: [...randomDeck] });
   };
 
-  render() {
-    const { location: { pathname } } = this.props;
+  removeCard = (cardId) => {
     const { deck } = this.state;
+    const newDeck = deck.filter(({ id }) => id !== cardId);
+    localStorage.setItem('deck', JSON.stringify(newDeck));
+    this.setState({ deck: [...newDeck] });
+  };
+
+  render() {
+    const { removeCard } = this;
+    const { deck } = this.state;
+    const { location: { pathname } } = this.props;
 
     return (
       <>
@@ -63,7 +74,13 @@ export default class App extends Component {
           <Route
             exact
             path="/pre-game"
-            render={() => <PreGame deck={deck} />}
+            render={(props) => (
+              <PreGame
+                {...props}
+                deck={deck}
+                removeCard={removeCard}
+              />
+            )}
           />
         </main>
 
