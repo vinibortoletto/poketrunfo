@@ -46,7 +46,7 @@ export default class App extends Component {
   getRandomDeck = async () => {
     const randomPokemon = await this.getRandomPokemon();
     const randomPokemonInfo = await fetchPokemonInfo(randomPokemon.name);
-    const randomDeck = [randomPokemonInfo];
+    const randomDeck = [{ ...randomPokemonInfo, trunfo: false }];
 
     for (let i = 0; randomDeck.length !== 10; i += 1) {
       const newRandomPokemon = await this.getRandomPokemon();
@@ -54,7 +54,7 @@ export default class App extends Component {
 
       if (!hasPokemon) {
         const newRandomPokemonInfo = await fetchPokemonInfo(newRandomPokemon.name);
-        randomDeck.push(newRandomPokemonInfo);
+        randomDeck.push({ ...newRandomPokemonInfo, trunfo: false });
       }
     }
 
@@ -81,7 +81,7 @@ export default class App extends Component {
         {pathname !== '/' && <Header />}
 
         <main>
-          <Route exact path="/" component={Welcome} />
+          <Route exact path="/" render={(props) => <Welcome {...props} />} />
           <Route
             exact
             path="/pre-game"
