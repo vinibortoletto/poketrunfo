@@ -1,9 +1,8 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import Logo from '../../components/Logo/Logo';
 import SeparatorBars from './SeparatorBars/SeparatorBars';
-
 import * as S from './Welcome.style';
 
 export default class Welcome extends React.Component {
@@ -40,7 +39,11 @@ export default class Welcome extends React.Component {
             <SeparatorBars />
 
             <div>
-              <Button type="button" title="Continuar" path="/pre-game" />
+              <Button type="button">
+                <Link to="/pre-game">
+                  Continuar
+                </Link>
+              </Button>
             </div>
           </S.LightBlueContainer>
         </S.BlueContainer>

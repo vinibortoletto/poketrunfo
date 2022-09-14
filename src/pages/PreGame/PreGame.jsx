@@ -5,6 +5,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
+import { Link } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import Card from '../../components/Card/Card';
 import Title from '../../components/Title/Title';
@@ -81,11 +82,11 @@ export default class PreGame extends React.Component {
           }
         </S.Deck>
 
-        <Button
-          title="Jogar"
-          type="button"
-          path="/game"
-        />
+        <Button type="button">
+          <Link to="/game">
+            Jogar
+          </Link>
+        </Button>
       </S.Section>
     );
   }
