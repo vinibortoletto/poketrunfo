@@ -43,10 +43,50 @@ export default class App extends Component {
     return randomPokemon;
   };
 
+  createPokemonObject = (pokemon) => {
+    const {
+      id,
+      name,
+      sprites,
+      stats,
+      types,
+    } = pokemon;
+
+    return {
+      id,
+      name,
+      image: sprites.other['official-artwork'].front_default,
+      stats: [
+        {
+          id: 0,
+          name: 'Vida',
+          points: stats[0].base_stat,
+        },
+        {
+          id: 1,
+          name: 'Ataque',
+          points: stats[1].base_stat,
+        },
+        {
+          id: 2,
+          name: 'Defesa',
+          points: stats[2].base_stat,
+        },
+        {
+          id: 3,
+          name: 'Velocidade',
+          points: stats[5].base_stat,
+        },
+      ],
+      type: types[0].type.name,
+      trunfo: false,
+    };
+  };
+
   getRandomDeck = async () => {
     const randomPokemon = await this.getRandomPokemon();
     const randomPokemonInfo = await fetchPokemonInfo(randomPokemon.name);
-    const randomDeck = [{ ...randomPokemonInfo, trunfo: false }];
+    const randomDeck = [this.createPokemonObject(randomPokemonInfo)];
 
     for (let i = 0; randomDeck.length !== 10; i += 1) {
       const newRandomPokemon = await this.getRandomPokemon();
@@ -54,7 +94,7 @@ export default class App extends Component {
 
       if (!hasPokemon) {
         const newRandomPokemonInfo = await fetchPokemonInfo(newRandomPokemon.name);
-        randomDeck.push({ ...newRandomPokemonInfo, trunfo: false });
+        randomDeck.push(this.createPokemonObject(newRandomPokemonInfo));
       }
     }
 
@@ -67,6 +107,13 @@ export default class App extends Component {
     const newDeck = deck.filter(({ id }) => id !== cardId);
     localStorage.setItem('deck', JSON.stringify(newDeck));
     this.setState({ deck: [...newDeck] });
+  };
+
+  addCard = () => {
+    /*
+      - when generating a deck, create a custom object for each card
+      - this will be helpful when mapping the array and when adding new cards to it
+    */
   };
 
   render() {

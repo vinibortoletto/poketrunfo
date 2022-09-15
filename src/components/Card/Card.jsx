@@ -1,7 +1,7 @@
-import {
-  string, shape, arrayOf, func, number,
-} from 'prop-types';
 import React from 'react';
+import {
+  string, shape, arrayOf, func, number, bool,
+} from 'prop-types';
 import closeIcon from '../../images/close-icon.png';
 import Illustration from './Illustration/Illustration';
 import StatItem from './StatItem/StatItem';
@@ -10,47 +10,39 @@ import * as S from './Card.style';
 export default class Card extends React.Component {
   render() {
     const {
-      sprites: {
-        other: {
-          'official-artwork': {
-            front_default: pokemonImage,
-          },
-        },
-      },
-      name: pokemonName,
-      stats,
-      types,
       id,
+      name,
+      image,
+      stats,
+      trunfo,
+      type,
       removeCard,
     } = this.props;
-
-    const { name: pokemonType } = types[0].type;
 
     return (
       <S.YellowContainer>
         <S.BlueContainer>
           <S.Content>
             <S.RemoveButton onClick={() => removeCard(id)}>
-              <img src={closeIcon} alt={`imagem do pokemon ${pokemonName}`} />
+              <img src={closeIcon} alt={`imagem do pokemon ${name}`} />
             </S.RemoveButton>
 
-            <S.Title>{pokemonName}</S.Title>
+            <S.Title>{name}</S.Title>
 
-            <Illustration pokemonImage={pokemonImage} />
+            <Illustration image={image} trufo={trunfo} />
 
             <S.StatList>
-              {stats.map(({ base_stat: statPoints, stat }) => (
-                !stat.name.includes('special') && (
-                  <StatItem
-                    key={stat.name}
-                    statName={stat.name}
-                    statPoints={statPoints}
-                  />
-                )))}
+              {stats.map((stat) => (
+                <StatItem
+                  key={stat.id}
+                  statName={stat.name}
+                  statPoints={stat.points}
+                />
+              ))}
             </S.StatList>
 
-            <S.Type type={pokemonType}>
-              {pokemonType}
+            <S.Type type={type}>
+              {type}
             </S.Type>
 
           </S.Content>
@@ -61,10 +53,11 @@ export default class Card extends React.Component {
 }
 
 Card.propTypes = {
-  sprites: shape({}).isRequired,
-  name: string.isRequired,
-  stats: arrayOf(shape({})).isRequired,
-  types: arrayOf(shape({})).isRequired,
   id: number.isRequired,
+  name: string.isRequired,
+  image: string.isRequired,
+  stats: arrayOf(shape({})).isRequired,
+  trunfo: bool.isRequired,
+  type: string.isRequired,
   removeCard: func.isRequired,
 };

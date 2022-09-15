@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../../components/Card/Card';
+import Button from '../../components/Button/Button';
 import InputField from '../../components/InputField/InputField';
 import Title from '../../components/Title/Title';
 import CardTemplate from './CardTemplate/CardTemplate';
@@ -25,8 +25,12 @@ export default class CreateNewCard extends React.Component {
     this.setState({ [name]: type === 'checkbox' ? checked : value });
   };
 
+  handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
   render() {
-    const { handleInputChange } = this;
+    const { handleInputChange, handleSubmit } = this;
     const {
       cardName,
       cardImage,
@@ -90,7 +94,7 @@ export default class CreateNewCard extends React.Component {
         <div>
           <Title text="CRIA SUA CARTA" />
 
-          <S.Form>
+          <S.Form onSubmit={handleSubmit}>
             <InputField
               label="Nome da carta:"
               type="text"
@@ -167,6 +171,10 @@ export default class CreateNewCard extends React.Component {
               value={cardTrunfo}
               onChange={handleInputChange}
             />
+
+            <Button type="submit">
+              Salvar
+            </Button>
           </S.Form>
         </div>
 
