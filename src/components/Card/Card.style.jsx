@@ -7,8 +7,7 @@ const { color } = variables;
 
 export const YellowContainer = styled.div`
   ${coloredContainer(5, 'yellow', 'yellowShadow', 0.5)};
-  width: 100%;
-  max-width: 15rem;
+  width: 15rem;
   position: relative;
   margin: 1rem 0.5rem;
 `;

@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components/macro';
 import variables from './variables';
 import './fonts.css';
+import { coloredContainer } from './mixins/coloredContainer';
 
 const { color, fontFamily } = variables;
 
@@ -18,11 +19,14 @@ const GlobalStyles = createGlobalStyle`
     color:  ${color.blueDark};
     font-size: 1.5rem;
     font-family: ${fontFamily.special};
-    
   }
 
   h1, h2 {
     font-weight: normal;
+  }
+
+  .slick-track {
+    width: 9000px !important;
   }
 `;
 
