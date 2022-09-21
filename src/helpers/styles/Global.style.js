@@ -1,7 +1,6 @@
 import { createGlobalStyle } from 'styled-components/macro';
 import variables from './variables';
 import './fonts.css';
-import { coloredContainer } from './mixins/coloredContainer';
 
 const { color, fontFamily } = variables;
 
