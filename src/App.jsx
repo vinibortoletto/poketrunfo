@@ -109,15 +109,20 @@ export default class App extends Component {
     this.setState({ deck: [...newDeck] });
   };
 
-  addCard = () => {
-    /*
-      - when generating a deck, create a custom object for each card
-      - this will be helpful when mapping the array and when adding new cards to it
-    */
+  addCard = (newCard) => {
+    const { deck } = this.state;
+    const newDeck = [...deck, newCard];
+    localStorage.setItem('deck', JSON.stringify(newDeck));
+    this.setState({ deck: [...newDeck] });
   };
 
   render() {
-    const { getRandomDeck, removeCard } = this;
+    const {
+      getRandomDeck,
+      removeCard,
+      createPokemonObject,
+      addCard,
+    } = this;
     const { deck } = this.state;
     const { location: { pathname } } = this.props;
 
@@ -141,7 +146,18 @@ export default class App extends Component {
               />
             )}
           />
-          <Route exact path="/create-new-card" render={() => <CreateNewCard />} />
+          <Route
+            exact
+            path="/create-new-card"
+            render={(props) => (
+              <CreateNewCard
+                {...props}
+                deck={deck}
+                createPokemonObject={createPokemonObject}
+                addCard={addCard}
+              />
+            )}
+          />
         </main>
 
         <Footer />

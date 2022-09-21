@@ -1,4 +1,5 @@
 import React from 'react';
+import { shape, func } from 'prop-types';
 import Button from '../../components/Button/Button';
 import InputField from '../../components/InputField/InputField';
 import Title from '../../components/Title/Title';
@@ -13,7 +14,7 @@ export default class CreateNewCard extends React.Component {
     cardAttack: '',
     cardDefense: '',
     cardSpeed: '',
-    cardType: '',
+    cardType: 'normal',
     cardTrunfo: false,
   };
 
@@ -25,8 +26,96 @@ export default class CreateNewCard extends React.Component {
     this.setState({ [name]: type === 'checkbox' ? checked : value });
   };
 
+  getRandomId = () => {
+    const numberOfFirstGenPokemons = 151;
+    const randomId = Math.floor(
+      Math.random() * numberOfFirstGenPokemons,
+    ) + numberOfFirstGenPokemons;
+
+    const localDeck = this.getLocalDeck();
+    const isRandomIdValid = !localDeck.some((card) => card.id === randomId);
+
+    if (!isRandomIdValid) this.getRandomId();
+    return randomId;
+  };
+
+  getLocalDeck = () => JSON.parse(localStorage.getItem('deck'));
+
+  createNewCardObject = () => {
+    const {
+      cardName,
+      cardImage,
+      cardHP,
+      cardAttack,
+      cardDefense,
+      cardSpeed,
+      cardType,
+      cardTrunfo,
+    } = this.state;
+
+    return {
+      id: this.getRandomId(),
+      image: cardImage,
+      name: cardName,
+      stats: [
+        {
+          id: 0,
+          name: 'Vida',
+          points: cardHP,
+        },
+        {
+          id: 1,
+          name: 'Ataque',
+          points: cardAttack,
+        },
+        {
+          id: 2,
+          name: 'Defesa',
+          points: cardDefense,
+        },
+        {
+          id: 3,
+          name: 'Velocidade',
+          points: cardSpeed,
+        },
+      ],
+      trunfo: cardTrunfo,
+      type: cardType,
+    };
+  };
+
+  validateCard = () => {
+    const {
+      cardName,
+      cardImage,
+      cardHP,
+      cardAttack,
+      cardDefense,
+      cardSpeed,
+      cardType,
+    } = this.state;
+
+    return (
+      cardName !== ''
+      && cardImage !== ''
+      && cardHP !== ''
+      && cardAttack !== ''
+      && cardDefense !== ''
+      && cardSpeed !== ''
+      && cardType !== ''
+    );
+  };
+
   handleSubmit = (event) => {
     event.preventDefault();
+
+    const { history, addCard } = this.props;
+    const isValid = this.validateCard();
+
+    if (isValid) {
+      addCard(this.createNewCardObject());
+      history.push('/pre-game');
+    }
   };
 
   render() {
@@ -191,3 +280,8 @@ export default class CreateNewCard extends React.Component {
     );
   }
 }
+
+CreateNewCard.propTypes = {
+  history: shape({}).isRequired,
+  addCard: func.isRequired,
+};

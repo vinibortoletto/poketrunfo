@@ -36,7 +36,7 @@ export default class Card extends React.Component {
                 <StatItem
                   key={stat.id}
                   statName={stat.name}
-                  statPoints={stat.points}
+                  statPoints={stat.points.toString()}
                 />
               ))}
             </S.StatList>
