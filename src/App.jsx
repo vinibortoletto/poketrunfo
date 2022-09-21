@@ -14,16 +14,22 @@ import './helpers/styles/reset.css';
 import GlobalStyles from './helpers/styles/Global.style';
 import { fetchFirstGenPokemons, fetchPokemonInfo } from './api/pokeapi';
 import CreateNewCard from './pages/CreateNewCard/CreateNewCard';
+import Loading from './components/Loading/Loading';
 
 export default class App extends Component {
   state = {
     deck: [],
+    isLoading: false,
   };
 
   async componentDidMount() {
+    this.setState({ isLoading: true });
+
     const localDeck = JSON.parse(localStorage.getItem('deck'));
     if (localDeck) this.setState({ deck: [...localDeck] });
-    else this.getRandomDeck();
+    else await this.getRandomDeck();
+
+    this.setState({ isLoading: false });
   }
 
   componentDidUpdate(prevProps) {
@@ -84,6 +90,8 @@ export default class App extends Component {
   };
 
   getRandomDeck = async () => {
+    this.setState({ isLoading: true });
+
     const randomPokemon = await this.getRandomPokemon();
     const randomPokemonInfo = await fetchPokemonInfo(randomPokemon.name);
     const randomDeck = [this.createPokemonObject(randomPokemonInfo)];
@@ -99,7 +107,10 @@ export default class App extends Component {
     }
 
     localStorage.setItem('deck', JSON.stringify(randomDeck));
-    this.setState({ deck: [...randomDeck] });
+    this.setState({
+      deck: [...randomDeck],
+      isLoading: false,
+    });
   };
 
   removeCard = (cardId) => {
@@ -123,44 +134,53 @@ export default class App extends Component {
       createPokemonObject,
       addCard,
     } = this;
-    const { deck } = this.state;
+    const { deck, isLoading } = this.state;
     const { location: { pathname } } = this.props;
 
     return (
       <>
         <GlobalStyles />
 
-        {pathname !== '/' && <Header />}
+        {
+          isLoading
+            ? <Loading />
+            : (
+              <>
+                {pathname !== '/' && <Header />}
 
-        <main>
-          <Route exact path="/" render={(props) => <Welcome {...props} />} />
-          <Route
-            exact
-            path="/pre-game"
-            render={(props) => (
-              <PreGame
-                {...props}
-                deck={deck}
-                removeCard={removeCard}
-                getRandomDeck={getRandomDeck}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/create-new-card"
-            render={(props) => (
-              <CreateNewCard
-                {...props}
-                deck={deck}
-                createPokemonObject={createPokemonObject}
-                addCard={addCard}
-              />
-            )}
-          />
-        </main>
+                <main>
+                  <Route exact path="/" render={(props) => <Welcome {...props} />} />
+                  <Route
+                    exact
+                    path="/pre-game"
+                    render={(props) => (
+                      <PreGame
+                        {...props}
+                        deck={deck}
+                        removeCard={removeCard}
+                        getRandomDeck={getRandomDeck}
+                      />
+                    )}
+                  />
+                  <Route
+                    exact
+                    path="/create-new-card"
+                    render={(props) => (
+                      <CreateNewCard
+                        {...props}
+                        deck={deck}
+                        createPokemonObject={createPokemonObject}
+                        addCard={addCard}
+                      />
+                    )}
+                  />
+                </main>
 
-        <Footer />
+                <Footer />
+              </>
+            )
+        }
+
       </>
     );
   }
