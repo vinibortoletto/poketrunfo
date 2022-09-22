@@ -16,7 +16,7 @@ export default class InputField extends React.Component {
     } = this.props;
 
     return (
-      <div>
+      <S.Container>
         <S.Label htmlFor={name}>
           {type !== 'checkbox' && label}
           <S.Input
@@ -29,7 +29,7 @@ export default class InputField extends React.Component {
           />
           {type === 'checkbox' && label}
         </S.Label>
-      </div>
+      </S.Container>
     );
   }
 }

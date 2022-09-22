@@ -5,6 +5,7 @@ import InputField from '../../components/InputField/InputField';
 import Title from '../../components/Title/Title';
 import CardTemplate from './CardTemplate/CardTemplate';
 import * as S from './CreateNewCard.style';
+import SelectInput from '../../components/SelectInput/SelectInput';
 
 export default class CreateNewCard extends React.Component {
   state = {
@@ -157,29 +158,8 @@ export default class CreateNewCard extends React.Component {
       },
     ];
 
-    const pokemonTypes = [
-      'normal',
-      'fire',
-      'water',
-      'grass',
-      'electric',
-      'ice',
-      'fighting',
-      'poison',
-      'ground',
-      'flying',
-      'psychic',
-      'bug',
-      'rock',
-      'ghost',
-      'dark',
-      'dragon',
-      'steel',
-      'fairy',
-    ];
-
     return (
-      <section>
+      <S.Section>
         <div>
           <Title text="CRIA SUA CARTA" />
 
@@ -240,18 +220,10 @@ export default class CreateNewCard extends React.Component {
               />
             </div>
 
-            <label htmlFor="cardType">
-              <select
-                name="cardType"
-                id="cardType"
-                value={cardType}
-                onChange={handleInputChange}
-              >
-                {pokemonTypes.map((type) => (
-                  <option key={type} value={type}>{type}</option>
-                ))}
-              </select>
-            </label>
+            <SelectInput
+              cardType={cardType}
+              handleInputChange={handleInputChange}
+            />
 
             <InputField
               label="Super Trunfo"
@@ -276,7 +248,7 @@ export default class CreateNewCard extends React.Component {
             cardTrunfo={cardTrunfo}
           />
         </div>
-      </section>
+      </S.Section>
     );
   }
 }
