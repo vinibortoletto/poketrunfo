@@ -39,11 +39,11 @@ export default class Welcome extends React.Component {
             <SeparatorBars />
 
             <div>
-              <Button type="button">
-                <Link to="/pre-game">
+              <Link to="/pre-game">
+                <Button type="button">
                   Continuar
-                </Link>
-              </Button>
+                </Button>
+              </Link>
             </div>
           </S.LightBlueContainer>
         </S.BlueContainer>

@@ -102,11 +102,11 @@ export default class PreGame extends React.Component {
           }
         </S.Deck>
 
-        <Button type="button">
-          <Link to="/game">
+        <Link to="/game">
+          <Button type="button">
             Jogar
-          </Link>
-        </Button>
+          </Button>
+        </Link>
       </S.Section>
     );
   }
