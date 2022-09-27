@@ -58,12 +58,18 @@ export default class PreGame extends React.Component {
 
   render() {
     const {
-      deck, history, removeCard, getRandomDeck,
+      deck,
+      history,
+      removeCard,
+      getRandomDeck,
+      selectCardToPlay,
+      selectedCardToPlay,
     } = this.props;
     const { width } = this.state;
     const deckIsFullMsg = 'Remova alguma carta antes de criar uma nova.';
     const createCardMsg = 'Crie uma carta.';
     const deckIsFull = deck.length === 10;
+    const hasSelectedCard = Object.keys(selectedCardToPlay).length > 0;
 
     return (
       <S.Section>
@@ -90,7 +96,13 @@ export default class PreGame extends React.Component {
               ? (
                 <Slider {...SLIDER_SETTINGS}>
                   {deck.map((card) => (
-                    <Card key={card.id} {...card} removeCard={removeCard} />
+                    <Card
+                      {...card}
+                      key={card.id}
+                      removeCard={removeCard}
+                      selectCardToPlay={selectCardToPlay}
+                      selectedCardToPlay={selectedCardToPlay}
+                    />
                   ))}
                 </Slider>
               )
@@ -102,11 +114,13 @@ export default class PreGame extends React.Component {
           }
         </S.Deck>
 
-        <Link to="/game">
-          <Button type="button">
-            Jogar
-          </Button>
-        </Link>
+        <Button
+          type="button"
+          disabled={!hasSelectedCard}
+          pushNewRoute={() => history.push('/game')}
+        >
+          {hasSelectedCard ? 'Jogar' : 'Escolha uma carta para jogar'}
+        </Button>
       </S.Section>
     );
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { shape } from 'prop-types';
 import Button from '../../components/Button/Button';
 import Logo from '../../components/Logo/Logo';
 import SeparatorBars from './SeparatorBars/SeparatorBars';
@@ -7,6 +7,8 @@ import * as S from './Welcome.style';
 
 export default class Welcome extends React.Component {
   render() {
+    const { history } = this.props;
+
     return (
       <S.YellowContainer>
         <S.BlueContainer>
@@ -39,11 +41,12 @@ export default class Welcome extends React.Component {
             <SeparatorBars />
 
             <div>
-              <Link to="/pre-game">
-                <Button type="button">
-                  Continuar
-                </Button>
-              </Link>
+              <Button
+                type="button"
+                pushNewRoute={() => history.push('/pre-game')}
+              >
+                Continuar
+              </Button>
             </div>
           </S.LightBlueContainer>
         </S.BlueContainer>
@@ -51,3 +54,7 @@ export default class Welcome extends React.Component {
     );
   }
 }
+
+Welcome.propTypes = {
+  history: shape({}).isRequired,
+};

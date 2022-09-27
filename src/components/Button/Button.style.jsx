@@ -32,12 +32,19 @@ export const Button = styled.button`
   ${({ currentPath }) => (currentPath !== '/' && `
     margin-top: 3rem;
   `)}
-  
-  &:active {
-    ${BlueContainer} {
-      ${coloredContainer(6, 'blue', 'blueShadow', 0.5)};
-      border-top: 3px solid ${color.blueShadow};
-      border-bottom: 3px solid ${color.blue};
+
+  ${({ disabled }) => disabled && `
+    filter: grayscale(1);
+  `}
+
+  ${({ disabled }) => !disabled && `
+    &:active {
+      ${BlueContainer} {
+        ${coloredContainer(6, 'blue', 'blueShadow', 0.5)};
+        border-top: 3px solid ${color.blueShadow};
+        border-bottom: 3px solid ${color.blue};
+      }
     }
-  }
+  `}
+
 `;
