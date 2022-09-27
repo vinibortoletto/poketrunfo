@@ -5,6 +5,9 @@ const variables = {
   },
 
   color: {
+    // green
+    green: '#28D18A',
+
     // blue
     blueDark: '#0D1927',
     blue: '#2E6EB8',

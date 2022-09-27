@@ -17,10 +17,20 @@ export default class Card extends React.Component {
       trunfo,
       type,
       removeCard,
+      selectCardToPlay,
+      selectedCardToPlay,
     } = this.props;
 
+    const { pathname } = window.location;
+    const hasBorder = selectedCardToPlay.id === id && pathname !== '/game';
+
     return (
-      <S.YellowContainer>
+      <S.YellowContainer
+        role="button"
+        onClick={pathname === '/pre-game' ? () => selectCardToPlay(id) : () => {}}
+        hasBorder={hasBorder}
+        pathname={pathname}
+      >
         <S.BlueContainer>
           <S.Content>
             <S.RemoveButton onClick={() => removeCard(id)}>
@@ -52,12 +62,26 @@ export default class Card extends React.Component {
   }
 }
 
+Card.defaultProps = {
+  id: 0,
+  name: '',
+  image: '',
+  stats: [],
+  trunfo: false,
+  type: '',
+  removeCard: () => {},
+  selectCardToPlay: () => {},
+  selectedCardToPlay: {},
+};
+
 Card.propTypes = {
-  id: number.isRequired,
-  name: string.isRequired,
-  image: string.isRequired,
-  stats: arrayOf(shape({})).isRequired,
-  trunfo: bool.isRequired,
-  type: string.isRequired,
-  removeCard: func.isRequired,
+  id: number,
+  name: string,
+  image: string,
+  stats: arrayOf(shape({})),
+  trunfo: bool,
+  type: string,
+  removeCard: func,
+  selectCardToPlay: func,
+  selectedCardToPlay: shape({}),
 };

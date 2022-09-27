@@ -10,6 +10,15 @@ export const YellowContainer = styled.div`
   width: 15rem;
   position: relative;
   margin: 1rem 0.5rem;
+  
+  ${({ pathname }) => pathname === '/pre-game' && `
+    cursor: pointer;
+  `}
+
+  ${({ hasBorder }) => hasBorder && `
+    scale: 1.03;
+    border: 5px solid ${color.green};
+  `}
 `;
 
 export const BlueContainer = styled.div`

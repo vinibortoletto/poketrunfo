@@ -15,11 +15,13 @@ import GlobalStyles from './helpers/styles/Global.style';
 import { fetchFirstGenPokemons, fetchPokemonInfo } from './api/pokeapi';
 import CreateNewCard from './pages/CreateNewCard/CreateNewCard';
 import Loading from './components/Loading/Loading';
+import Game from './pages/Game/Game';
 
 export default class App extends Component {
   state = {
-    deck: [],
     isLoading: false,
+    deck: [],
+    selectedCardToPlay: {},
   };
 
   async componentDidMount() {
@@ -127,14 +129,27 @@ export default class App extends Component {
     this.setState({ deck: [...newDeck] });
   };
 
+  selectCardToPlay = (cardId) => {
+    const { deck } = this.state;
+    const selectedCard = deck.find(({ id }) => id === cardId);
+    this.setState({ selectedCardToPlay: { ...selectedCard } });
+  };
+
   render() {
     const {
       getRandomDeck,
       removeCard,
       createPokemonObject,
       addCard,
+      selectCardToPlay,
     } = this;
-    const { deck, isLoading } = this.state;
+
+    const {
+      deck,
+      isLoading,
+      selectedCardToPlay,
+    } = this.state;
+
     const { location: { pathname } } = this.props;
 
     return (
@@ -159,6 +174,8 @@ export default class App extends Component {
                         deck={deck}
                         removeCard={removeCard}
                         getRandomDeck={getRandomDeck}
+                        selectCardToPlay={selectCardToPlay}
+                        selectedCardToPlay={selectedCardToPlay}
                       />
                     )}
                   />
@@ -171,6 +188,17 @@ export default class App extends Component {
                         deck={deck}
                         createPokemonObject={createPokemonObject}
                         addCard={addCard}
+                      />
+                    )}
+                  />
+
+                  <Route
+                    exact
+                    path="/game"
+                    render={(props) => (
+                      <Game
+                        {...props}
+                        selectedCardToPlay={selectedCardToPlay}
                       />
                     )}
                   />
