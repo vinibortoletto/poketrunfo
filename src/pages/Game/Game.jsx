@@ -1,22 +1,13 @@
-import React from 'react';
-import {
-  number, string, arrayOf, bool, shape,
-} from 'prop-types';
+import React, { useContext } from 'react';
 import Card from '../../components/Card/Card';
+import { PokemonsContext } from '../../contexts/PokemonsContext';
 
-export default class Game extends React.Component {
-  render() {
-    const { selectedCardToPlay } = this.props;
+export default function Game() {
+  const { selectedCardToPlay } = useContext(PokemonsContext);
 
-    return (
-      <div>
-
-        <Card {...selectedCardToPlay} selectedCardToPlay={selectedCardToPlay} />
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Card {...selectedCardToPlay} selectedCardToPlay={selectedCardToPlay} />
+    </div>
+  );
 }
-
-Game.propTypes = {
-  selectedCardToPlay: shape({}).isRequired,
-};

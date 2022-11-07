@@ -1,87 +1,63 @@
-import React from 'react';
-import {
-  string, shape, arrayOf, func, number, bool,
-} from 'prop-types';
-import closeIcon from '../../images/close-icon.png';
+// Libs
+import React, { useContext } from 'react';
+import { shape } from 'prop-types';
+import { PokemonsContext } from '../../contexts/PokemonsContext';
+
+// Components
 import Illustration from './Illustration/Illustration';
 import StatItem from './StatItem/StatItem';
+
+// Styles
 import * as S from './Card.style';
+import closeIcon from '../../images/close-icon.png';
 
-export default class Card extends React.Component {
-  render() {
-    const {
-      id,
-      name,
-      image,
-      stats,
-      trunfo,
-      type,
-      removeCard,
-      selectCardToPlay,
-      selectedCardToPlay,
-    } = this.props;
+export default function Card({ card }) {
+  const {
+    pathname,
+    selectedCardToPlay,
+    selectCardToPlay,
+    removeCard,
+  } = useContext(PokemonsContext);
 
-    const { pathname } = window.location;
-    const hasBorder = selectedCardToPlay.id === id && pathname !== '/game';
+  const hasBorder = selectedCardToPlay.id === card.id && pathname !== '/game';
 
-    return (
-      <S.YellowContainer
-        role="button"
-        onClick={pathname === '/pre-game' ? () => selectCardToPlay(id) : () => {}}
-        hasBorder={hasBorder}
-        pathname={pathname}
-      >
-        <S.BlueContainer>
-          <S.Content>
-            <S.RemoveButton onClick={() => removeCard(id)}>
-              <img src={closeIcon} alt={`imagem do pokemon ${name}`} />
-            </S.RemoveButton>
+  return (
+    <S.YellowContainer
+      role="button"
+      onClick={pathname === '/pre-game' ? () => selectCardToPlay(card.id) : () => {}}
+      hasBorder={hasBorder}
+      pathname={pathname}
+    >
+      <S.BlueContainer>
+        <S.Content>
+          <S.RemoveButton onClick={() => removeCard(card.id)}>
+            <img src={closeIcon} alt={`imagem do pokemon ${card.name}`} />
+          </S.RemoveButton>
 
-            <S.Title>{name}</S.Title>
+          <S.Title>{card.name}</S.Title>
 
-            <Illustration image={image} trufo={trunfo} />
+          <Illustration image={card.image} trufo={card.trunfo} />
 
-            <S.StatList>
-              {stats.map((stat) => (
-                <StatItem
-                  key={stat.id}
-                  statName={stat.name}
-                  statPoints={stat.points.toString()}
-                />
-              ))}
-            </S.StatList>
+          <S.StatList>
+            {card.stats.map((stat) => (
+              <StatItem
+                key={stat.id}
+                statName={stat.name}
+                statPoints={stat.points.toString()}
+              />
+            ))}
+          </S.StatList>
 
-            <S.Type type={type}>
-              {type}
-            </S.Type>
+          <S.Type type={card.type}>
+            {card.type}
+          </S.Type>
 
-          </S.Content>
-        </S.BlueContainer>
-      </S.YellowContainer>
-    );
-  }
+        </S.Content>
+      </S.BlueContainer>
+    </S.YellowContainer>
+  );
 }
 
-Card.defaultProps = {
-  id: 0,
-  name: '',
-  image: '',
-  stats: [],
-  trunfo: false,
-  type: '',
-  removeCard: () => {},
-  selectCardToPlay: () => {},
-  selectedCardToPlay: {},
-};
-
 Card.propTypes = {
-  id: number,
-  name: string,
-  image: string,
-  stats: arrayOf(shape({})),
-  trunfo: bool,
-  type: string,
-  removeCard: func,
-  selectCardToPlay: func,
-  selectedCardToPlay: shape({}),
+  card: shape({}).isRequired,
 };
