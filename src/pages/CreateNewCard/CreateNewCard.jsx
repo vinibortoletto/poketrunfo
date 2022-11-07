@@ -1,12 +1,17 @@
+// Libs
 import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import Button from '../../components/Button/Button';
-import InputField from '../../components/InputField/InputField';
-import Title from '../../components/Title/Title';
-import CardTemplate from './CardTemplate/CardTemplate';
-import * as S from './CreateNewCard.style';
-import SelectInput from '../../components/SelectInput/SelectInput';
 import { PokemonsContext } from '../../contexts/PokemonsContext';
+
+// Components
+import Button from '../../components/Button/Button';
+import CardTemplate from './CardTemplate/CardTemplate';
+import InputField from '../../components/InputField/InputField';
+import SelectInput from '../../components/SelectInput/SelectInput';
+import Title from '../../components/Title/Title';
+
+// Styles
+import * as S from './CreateNewCard.style';
 
 export default function CreateNewCard() {
   const history = useHistory();
@@ -77,7 +82,7 @@ export default function CreateNewCard() {
       && newCard.type !== ''
   );
 
-  const handleSubmit = (event) => {
+  const handleFormSubmit = (event) => {
     event.preventDefault();
     const isValid = validateCard();
 
@@ -125,9 +130,9 @@ export default function CreateNewCard() {
   return (
     <S.Section>
       <div>
-        <Title text="CRIA SUA CARTA" />
+        <Title text="CRIE SUA CARTA" />
 
-        <S.Form onSubmit={handleSubmit}>
+        <S.Form onSubmit={handleFormSubmit}>
           <InputField
             label="Nome da carta:"
             type="text"
@@ -203,15 +208,10 @@ export default function CreateNewCard() {
         </S.Form>
       </div>
 
-      <div>
-        <CardTemplate
-          cardName={newCard.name}
-          cardImage={newCard.image}
-          cardStats={cardStats}
-          cardType={newCard.type}
-          cardTrunfo={newCard.trunfo}
-        />
-      </div>
+      <CardTemplate
+        cardStats={cardStats}
+        newCard={newCard}
+      />
     </S.Section>
   );
 }

@@ -1,8 +1,13 @@
+// Libs
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+
+// Components
 import Button from '../../components/Button/Button';
 import Logo from '../../components/Logo/Logo';
 import SeparatorBars from './SeparatorBars/SeparatorBars';
+
+// Styles
 import * as S from './Welcome.style';
 
 export default function Welcome() {

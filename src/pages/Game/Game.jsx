@@ -6,8 +6,6 @@ export default function Game() {
   const { selectedCardToPlay } = useContext(PokemonsContext);
 
   return (
-    <div>
-      <Card {...selectedCardToPlay} selectedCardToPlay={selectedCardToPlay} />
-    </div>
+    <Card {...selectedCardToPlay} selectedCardToPlay={selectedCardToPlay} />
   );
 }
